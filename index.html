@@ -248,11 +248,19 @@
 		.career-list {
 			position: relative;
 			display: grid;
-			max-width: 930px;
+			max-width: none;
 			margin: 0;
 			padding: 0;
 			list-style: none;
 		}
+
+		.experience-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px; align-items: start; }
+		.timeline-column { min-width: 0; }
+		.timeline-title { margin: 0 0 18px; font-family: var(--serif); font-size: 28px; font-weight: 600; }
+		.timeline-overlap { margin-bottom: 20px; padding: 16px 18px; border-left: 3px solid var(--navy); background: var(--blue-tint); }
+		.timeline-overlap p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
+		.timeline-overlap p + p { margin-top: 5px; color: var(--ink); }
+		.timeline-overlap strong { color: var(--navy); }
 
 		.career-list::before {
 			position: absolute;
@@ -381,6 +389,10 @@
 		.footer-inner { display: flex; justify-content: space-between; gap: 20px; padding-block: 21px; color: var(--muted); }
 		.footer-note { margin: 0; font-size: 10px; }
 
+		@media (max-width: 1000px) {
+			.experience-grid { grid-template-columns: 1fr; gap: 42px; }
+		}
+
 		@media (max-width: 760px) {
 			.shell { width: min(100% - 40px, 560px); }
 			.topbar { min-height: 72px; }
@@ -484,40 +496,23 @@
 		<section class="shell section" id="path" aria-labelledby="path-title">
 			<div class="section-heading">
 				<div>
-					<p class="section-kicker">Path / 2015—now</p>
-					<h2 id="path-title">A career in chapters.</h2>
+					<p class="section-kicker">Experience / Education</p>
+					<h2 id="path-title">Work &amp; study.</h2>
 				</div>
-				<p class="section-aside">From business software and industrial data to leading cloud-native banking systems, each chapter widened the frame.</p>
+				<p class="section-aside">Career and study, side by side. The 2023 overlap marks a year of building financial systems while studying software architecture.</p>
 			</div>
+			<div class="experience-grid">
+			<div class="timeline-column" aria-labelledby="career-title">
+				<h3 class="timeline-title" id="career-title">Career</h3>
 			<ol class="career-list">
 				<li class="career-entry">
-					<div class="career-date"><time datetime="2015-06">Jun 2015</time><time datetime="2021-05">May 2021</time></div>
+					<div class="career-date"><time datetime="2024-09">Sep 2024</time><span>Present</span></div>
 					<span class="career-marker" aria-hidden="true"></span>
 					<article class="career-content">
-						<p class="career-company">TudoBom Comercial</p>
-						<h3>Junior Software Developer</h3>
-						<p>Built on-premises business applications in Java Swing and Delphi, integrating enterprise databases, automating workflows and creating operational reports.</p>
-						<ul class="career-tags"><li>Java Swing</li><li>Delphi</li><li>Selenium</li><li>SQL Server · Oracle</li></ul>
-					</article>
-				</li>
-				<li class="career-entry">
-					<div class="career-date"><time datetime="2020-03">Mar 2020</time><time datetime="2021-05">May 2021</time></div>
-					<span class="career-marker" aria-hidden="true"></span>
-					<article class="career-content">
-						<p class="career-company">Aperam South America</p>
-						<h3>Software Engineer &amp; Data Analyst</h3>
-						<p>Alongside my software role, connected industrial work with analytics using Python, SQL, Power BI and SAP BW, then explored computer vision and machine learning.</p>
-						<ul class="career-tags"><li>Python</li><li>Power BI</li><li>TensorFlow</li><li>YOLO</li></ul>
-					</article>
-				</li>
-				<li class="career-entry">
-					<div class="career-date"><time datetime="2021-05">May 2021</time><time datetime="2023-06">Jun 2023</time></div>
-					<span class="career-marker" aria-hidden="true"></span>
-					<article class="career-content">
-						<p class="career-company">Banco Santander by Accenture Brasil</p>
-						<h3>Senior Software Engineer</h3>
-						<p>Developed high-throughput financial platforms with Java and Spring, delivered Angular interfaces and worked across cloud environments with international teams.</p>
-						<ul class="career-tags"><li>Java · Spring</li><li>Angular</li><li>AWS · Azure · GCP</li><li>Financial systems</li></ul>
+						<p class="career-company">Banco Bradesco S.A.</p>
+						<h3>Senior Software Engineer &amp; Tech Lead</h3>
+						<p>Lead cloud-native banking applications, shape Azure and OpenShift solutions, and deliver backend, serverless and Angular experiences across the stack.</p>
+						<ul class="career-tags"><li>Java · Kotlin</li><li>Spring · Quarkus</li><li>Azure · OpenShift</li><li>Angular · Node.js</li></ul>
 					</article>
 				</li>
 				<li class="career-entry">
@@ -531,16 +526,87 @@
 					</article>
 				</li>
 				<li class="career-entry">
-					<div class="career-date"><time datetime="2024-09">Sep 2024</time><span>Present</span></div>
+					<div class="career-date"><time datetime="2021-05">May 2021</time><time datetime="2023-06">Jun 2023</time></div>
 					<span class="career-marker" aria-hidden="true"></span>
 					<article class="career-content">
-						<p class="career-company">Banco Bradesco S.A.</p>
-						<h3>Senior Software Engineer &amp; Tech Lead</h3>
-						<p>Lead cloud-native banking applications, shape Azure and OpenShift solutions, and deliver backend, serverless and Angular experiences across the stack.</p>
-						<ul class="career-tags"><li>Java · Kotlin</li><li>Spring · Quarkus</li><li>Azure · OpenShift</li><li>Angular · Node.js</li></ul>
+						<p class="career-company">Banco Santander by Accenture Brasil</p>
+						<h3>Senior Software Engineer</h3>
+						<p>Developed high-throughput financial platforms with Java and Spring, delivered Angular interfaces and worked across cloud environments with international teams.</p>
+						<ul class="career-tags"><li>Java · Spring</li><li>Angular</li><li>AWS · Azure · GCP</li><li>Financial systems</li></ul>
+					</article>
+				</li>
+				<li class="career-entry">
+					<div class="career-date"><time datetime="2020-03">Mar 2020</time><time datetime="2021-05">May 2021</time></div>
+					<span class="career-marker" aria-hidden="true"></span>
+					<article class="career-content">
+						<p class="career-company">Aperam South America</p>
+						<h3>Software Engineer &amp; Data Analyst</h3>
+						<p>Alongside my software role, connected industrial work with analytics using Python, SQL, Power BI and SAP BW, then explored computer vision and machine learning.</p>
+						<ul class="career-tags"><li>Python</li><li>Power BI</li><li>TensorFlow</li><li>YOLO</li></ul>
+					</article>
+				</li>
+				<li class="career-entry">
+					<div class="career-date"><time datetime="2015-06">Jun 2015</time><time datetime="2021-05">May 2021</time></div>
+					<span class="career-marker" aria-hidden="true"></span>
+					<article class="career-content">
+						<p class="career-company">TudoBom Comercial</p>
+						<h3>Junior Software Developer</h3>
+						<p>Built on-premises business applications in Java Swing and Delphi, integrating enterprise databases, automating workflows and creating operational reports.</p>
+						<ul class="career-tags"><li>Java Swing</li><li>Delphi</li><li>Selenium</li><li>SQL Server · Oracle</li></ul>
 					</article>
 				</li>
 			</ol>
+			</div>
+			<div class="timeline-column" aria-labelledby="education-title">
+				<h3 class="timeline-title" id="education-title">Education</h3>
+				<div class="timeline-overlap">
+					<p><strong>2023 / Work + study</strong></p>
+					<p>At Banco Itaú while completing the Software Architecture post-degree at Iguaçu College (June–July overlap).</p>
+				</div>
+				<ol class="career-list">
+					<li class="career-entry">
+						<div class="career-date"><time datetime="2026-09">Sep 2026</time><span>Due Aug 2028</span></div>
+						<span class="career-marker" aria-hidden="true"></span>
+						<article class="career-content">
+							<p class="career-company">University of São Paulo (USP)</p>
+							<h3>Master's in Cybersecurity</h3>
+							<p>Graduate study in cybersecurity, currently in progress.</p>
+							<ul class="career-tags"><li>Cybersecurity</li><li>Master's degree</li></ul>
+						</article>
+					</li>
+					<li class="career-entry">
+						<div class="career-date"><time datetime="2026-01">Jan 2026</time><time datetime="2026-03">Mar 2026</time></div>
+						<span class="career-marker" aria-hidden="true"></span>
+						<article class="career-content">
+							<p class="career-company">California State University, Northridge (CSUN)</p>
+							<h3>Team Lead and System Management</h3>
+							<p>Studies in team leadership and system management.</p>
+							<ul class="career-tags"><li>Leadership</li><li>System management</li></ul>
+						</article>
+					</li>
+					<li class="career-entry">
+						<div class="career-date"><time datetime="2023-01">Jan 2023</time><time datetime="2023-07">Jul 2023</time></div>
+						<span class="career-marker" aria-hidden="true"></span>
+						<article class="career-content">
+							<p class="career-company">Iguaçu College</p>
+							<h3>Post-Degree in Software Architecture</h3>
+							<p>Postgraduate study in software architecture, alongside the move into financial services.</p>
+							<ul class="career-tags"><li>Software architecture</li></ul>
+						</article>
+					</li>
+					<li class="career-entry">
+						<div class="career-date"><time datetime="2019-02">Feb 2019</time><time datetime="2022-12">Dec 2022</time></div>
+						<span class="career-marker" aria-hidden="true"></span>
+						<article class="career-content">
+							<p class="career-company">Catholic University of Western of Minas Gerais</p>
+							<h3>Bachelor's in Information Systems</h3>
+							<p>Undergraduate degree in Information Systems.</p>
+							<ul class="career-tags"><li>Information Systems</li><li>Bachelor's degree</li></ul>
+						</article>
+					</li>
+				</ol>
+			</div>
+			</div>
 		</section>
 
 		<section class="shell section" id="work" aria-labelledby="work-title">
