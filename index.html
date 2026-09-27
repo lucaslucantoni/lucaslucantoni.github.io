@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#f3f4ef">
+	<meta name="description" content="Lucas Lucantoni is a senior software developer focused on Java, C#, and thoughtful software engineering.">
+	<title>Lucas Lucantoni — Software Developer</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			color-scheme: light;
+			--paper: #f3f4ef;
+			--ink: #18211c;
+			--muted: #68736b;
+			--line: #d8ddd5;
+			--green: #b7df67;
+			--red: #ec765d;
+			--yellow: #f0c95c;
+			--serif: "Playfair Display", Georgia, serif;
+			--sans: "DM Sans", sans-serif;
+			--mono: "DM Mono", monospace;
+		}
+
+		* { box-sizing: border-box; }
+
+		html { scroll-behavior: smooth; }
+
+		body {
+			margin: 0;
+			color: var(--ink);
+			background-color: var(--paper);
+			background-image: linear-gradient(#18211c08 1px, transparent 1px), linear-gradient(90deg, #18211c08 1px, transparent 1px);
+			background-size: 32px 32px;
+			font-family: var(--sans);
+			-webkit-font-smoothing: antialiased;
+		}
+
+		a { color: inherit; }
+
+		.shell {
+			width: min(1120px, calc(100% - 64px));
+			margin-inline: auto;
+		}
+
+		.topbar {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			min-height: 84px;
+			border-bottom: 1px solid var(--line);
+		}
+
+		.identity {
+			display: inline-flex;
+			gap: 12px;
+			align-items: center;
+			text-decoration: none;
+			font-size: 14px;
+			font-weight: 700;
+		}
+
+		.monogram {
+			display: grid;
+			width: 36px;
+			aspect-ratio: 1;
+			place-items: center;
+			background: var(--green);
+			font-family: var(--serif);
+			font-size: 17px;
+		}
+
+		.nav-links { display: flex; gap: 34px; align-items: center; }
+
+		.nav-links a {
+			color: var(--muted);
+			font-size: 13px;
+			text-decoration: none;
+			transition: color 160ms ease;
+		}
+
+		.nav-links a:hover, .nav-links a:focus-visible { color: var(--ink); }
+
+		.nav-links .contact-link {
+			padding: 10px 15px;
+			border: 1px solid var(--ink);
+			color: var(--ink);
+		}
+
+		.hero {
+			display: grid;
+			grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr);
+			gap: clamp(48px, 9vw, 120px);
+			align-items: center;
+			min-height: 580px;
+			padding-block: 74px 88px;
+		}
+
+		.eyebrow, .section-kicker, .project-index, .photo-caption, .footer-note {
+			font-family: var(--mono);
+			font-size: 11px;
+			letter-spacing: 0;
+			text-transform: uppercase;
+		}
+
+		.eyebrow { display: flex; gap: 10px; align-items: center; color: var(--muted); }
+
+		.eyebrow::before {
+			width: 8px;
+			height: 8px;
+			background: var(--red);
+			content: "";
+		}
+
+		h1 {
+			max-width: 680px;
+			margin: 25px 0 21px;
+			font-family: var(--serif);
+			font-size: clamp(52px, 7.2vw, 88px);
+			font-weight: 500;
+			line-height: .99;
+		}
+
+		h1 span { color: #597346; font-style: italic; }
+
+		.hero-copy {
+			max-width: 470px;
+			margin: 0;
+			color: #4f5b53;
+			font-size: 16px;
+			line-height: 1.75;
+		}
+
+		.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+
+		.button {
+			display: inline-flex;
+			min-height: 46px;
+			gap: 11px;
+			align-items: center;
+			padding: 0 17px;
+			background: var(--ink);
+			color: var(--paper);
+			font-size: 13px;
+			font-weight: 600;
+			text-decoration: none;
+			transition: transform 160ms ease, background 160ms ease;
+		}
+
+		.button:hover { transform: translateY(-2px); background: #34453a; }
+		.button .arrow { font-size: 17px; }
+
+		.text-link {
+			display: inline-flex;
+			min-height: 46px;
+			align-items: center;
+			gap: 9px;
+			padding-inline: 7px;
+			font-size: 13px;
+			font-weight: 600;
+			text-decoration-thickness: 1px;
+			text-underline-offset: 4px;
+		}
+
+		.portrait-wrap { position: relative; max-width: 360px; justify-self: end; margin: 0; }
+
+		.portrait-frame {
+			position: relative;
+			z-index: 1;
+			overflow: hidden;
+			aspect-ratio: 4 / 4.7;
+			background: var(--green);
+		}
+
+		.portrait-frame img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+		.portrait-accent {
+			position: absolute;
+			top: -17px;
+			right: -17px;
+			width: 76px;
+			aspect-ratio: 1;
+			background: var(--yellow);
+		}
+
+		.photo-caption {
+			display: flex;
+			justify-content: space-between;
+			gap: 14px;
+			margin-top: 15px;
+			color: var(--muted);
+			font-size: 10px;
+		}
+
+		.photo-caption span:last-child { color: var(--ink); }
+
+		.ticker {
+			overflow: hidden;
+			border-block: 1px solid var(--line);
+			background: #e9eee2;
+		}
+
+		.ticker-inner {
+			display: flex;
+			min-height: 62px;
+			justify-content: space-between;
+			align-items: center;
+			gap: 25px;
+			color: #445248;
+			font-family: var(--mono);
+			font-size: 11px;
+			text-transform: uppercase;
+		}
+
+		.ticker-item { display: flex; gap: 10px; align-items: center; white-space: nowrap; }
+		.ticker-item::before { color: #71934a; content: "+"; font-size: 17px; }
+
+		.section { padding-block: 100px; }
+
+		.section-heading {
+			display: flex;
+			justify-content: space-between;
+			align-items: end;
+			gap: 30px;
+			margin-bottom: 34px;
+		}
+
+		.section-kicker { margin: 0 0 12px; color: #69756b; }
+
+		h2 {
+			margin: 0;
+			font-family: var(--serif);
+			font-size: clamp(38px, 5vw, 54px);
+			font-weight: 500;
+			line-height: 1.08;
+		}
+
+		.section-aside { max-width: 275px; margin: 0 0 4px; color: var(--muted); font-size: 14px; line-height: 1.65; }
+
+		.project-grid {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 16px;
+		}
+
+		.project-card {
+			display: flex;
+			min-height: 260px;
+			flex-direction: column;
+			padding: 25px 27px 23px;
+			border: 1px solid var(--line);
+			background: #fbfcf8;
+			text-decoration: none;
+			transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+		}
+
+		.project-card:hover {
+			transform: translateY(-3px);
+			border-color: #87927f;
+			box-shadow: 5px 5px 0 #18211c12;
+		}
+
+		.project-top { display: flex; justify-content: space-between; align-items: center; }
+		.project-index { color: var(--muted); }
+
+		.project-mark {
+			display: grid;
+			width: 50px;
+			aspect-ratio: 1;
+			place-items: center;
+			background: var(--green);
+			font-family: var(--serif);
+			font-size: 20px;
+		}
+
+		.project-card:nth-child(2) .project-mark { background: #f5d47a; }
+		.project-card:nth-child(3) .project-mark { background: #f0a38e; }
+		.project-card:nth-child(4) .project-mark { background: #d3dacf; }
+
+		.project-card h3 { margin: 30px 0 8px; font-family: var(--serif); font-size: 27px; font-weight: 500; }
+		.project-card p { max-width: 440px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+
+		.project-meta {
+			display: flex;
+			justify-content: space-between;
+			gap: 16px;
+			align-items: center;
+			margin-top: auto;
+			padding-top: 26px;
+			color: #536256;
+			font-family: var(--mono);
+			font-size: 10px;
+			text-transform: uppercase;
+		}
+
+		.project-meta .visit { color: var(--ink); font-family: var(--sans); font-size: 18px; }
+
+		.about {
+			display: grid;
+			grid-template-columns: .9fr 1.1fr;
+			gap: 90px;
+			padding-block: 77px 84px;
+			border-top: 1px solid var(--line);
+			border-bottom: 1px solid var(--line);
+		}
+
+		.about-copy { max-width: 600px; }
+		.about-copy p { margin: 0; color: #4f5b53; font-size: 16px; line-height: 1.8; }
+		.about-copy p + p { margin-top: 17px; }
+
+		.about-details { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 32px; align-content: center; }
+		.detail { padding-top: 12px; border-top: 1px solid var(--line); }
+		.detail h3 { margin: 0 0 10px; color: var(--muted); font-family: var(--mono); font-size: 10px; font-weight: 400; text-transform: uppercase; }
+		.detail p { margin: 0; font-size: 14px; line-height: 1.65; }
+
+		.contact {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			gap: 30px;
+			padding-block: 77px;
+		}
+
+		.contact h2 { max-width: 600px; }
+		.contact h2 span { color: #597346; font-style: italic; }
+		.contact-actions { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+
+		footer { border-top: 1px solid var(--line); }
+		.footer-inner { display: flex; justify-content: space-between; gap: 20px; padding-block: 21px; color: var(--muted); }
+		.footer-note { margin: 0; font-size: 10px; }
+
+		@media (max-width: 760px) {
+			.shell { width: min(100% - 40px, 560px); }
+			.topbar { min-height: 72px; }
+			.nav-links { gap: 18px; }
+			.nav-links a:first-child { display: none; }
+			.hero { grid-template-columns: 1fr; gap: 40px; min-height: 0; padding-block: 72px 60px; }
+			.hero-copy { max-width: 540px; }
+			.portrait-wrap { width: min(100%, 340px); justify-self: start; }
+			.portrait-frame { aspect-ratio: 1.2; }
+			.ticker-inner { justify-content: flex-start; overflow-x: auto; }
+			.section { padding-block: 72px; }
+			.section-heading { align-items: start; flex-direction: column; gap: 14px; }
+			.section-aside { max-width: 420px; }
+			.about { grid-template-columns: 1fr; gap: 38px; padding-block: 65px; }
+			.contact { align-items: start; flex-direction: column; padding-block: 62px; }
+		}
+
+		@media (max-width: 500px) {
+			.shell { width: calc(100% - 36px); }
+			.identity { gap: 9px; font-size: 12px; }
+			.monogram { width: 32px; }
+			.nav-links { gap: 13px; }
+			.nav-links a { font-size: 12px; }
+			.nav-links .contact-link { padding: 8px 10px; }
+			h1 { font-size: clamp(48px, 14vw, 66px); }
+			.hero-copy { font-size: 15px; }
+			.project-grid { grid-template-columns: 1fr; }
+			.project-card { min-height: 240px; padding: 22px; }
+			.about-details { gap: 22px 18px; }
+			.footer-inner { align-items: start; flex-direction: column; gap: 9px; }
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			*, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+		}
+	</style>
+</head>
+<body>
+	<header class="shell topbar">
+		<a class="identity" href="#home" aria-label="Lucas Lucantoni, home">
+			<span class="monogram" aria-hidden="true">LL</span>
+			<span>Lucas Lucantoni</span>
+		</a>
+		<nav class="nav-links" aria-label="Main navigation">
+			<a href="#about">About</a>
+			<a href="#work">Selected work</a>
+			<a class="contact-link" href="#contact">Get in touch <span aria-hidden="true">↗</span></a>
+		</nav>
+	</header>
+
+	<main>
+		<section class="shell hero" id="home" aria-labelledby="intro-title">
+			<div>
+				<p class="eyebrow">Senior software developer</p>
+				<h1 id="intro-title">Hello, I'm<br>Lucas <span>Lucantoni.</span></h1>
+				<p class="hero-copy">I build dependable software and enjoy making complex systems easier to use, understand, and grow. My work is rooted in Java and C#, with a soft spot for thoughtful backend engineering.</p>
+				<div class="hero-actions">
+					<a class="button" href="#work">Explore my work <span class="arrow" aria-hidden="true">↓</span></a>
+					<a class="text-link" href="https://github.com/lucaslucantoni" target="_blank" rel="noreferrer">GitHub profile <span aria-hidden="true">↗</span></a>
+				</div>
+			</div>
+			<figure class="portrait-wrap">
+				<span class="portrait-accent" aria-hidden="true"></span>
+				<div class="portrait-frame">
+					<img src="https://avatars.githubusercontent.com/u/48351001?v=4" alt="Lucas Lucantoni" width="460" height="460">
+				</div>
+				<figcaption class="photo-caption"><span>Software, built with care</span><span>01 / 01</span></figcaption>
+			</figure>
+		</section>
+
+		<div class="ticker" aria-label="Core technologies">
+			<div class="shell ticker-inner">
+				<span class="ticker-item">Java</span>
+				<span class="ticker-item">Spring</span>
+				<span class="ticker-item">C#</span>
+				<span class="ticker-item">Azure</span>
+				<span class="ticker-item">Keycloak</span>
+				<span class="ticker-item">APIs &amp; systems</span>
+			</div>
+		</div>
+
+		<section class="shell section" id="work" aria-labelledby="work-title">
+			<div class="section-heading">
+				<div>
+					<p class="section-kicker">A few things I've built</p>
+					<h2 id="work-title">Selected work</h2>
+				</div>
+				<p class="section-aside">A mix of application development, practical experiments, and the patterns behind maintainable code.</p>
+			</div>
+			<div class="project-grid">
+				<a class="project-card" href="https://github.com/lucaslucantoni/application-backend" target="_blank" rel="noreferrer">
+					<div class="project-top"><span class="project-index">01 / APPLICATION</span><span class="project-mark" aria-hidden="true">API</span></div>
+					<h3>ERP System APIs</h3>
+					<p>Backend APIs for an ERP system, built with Spring Boot and Java, with a companion Angular frontend.</p>
+					<div class="project-meta"><span>Java · Spring Boot · Docker</span><span class="visit" aria-hidden="true">↗</span></div>
+				</a>
+				<a class="project-card" href="https://github.com/lucaslucantoni/customer-api" target="_blank" rel="noreferrer">
+					<div class="project-top"><span class="project-index">02 / BACKEND</span><span class="project-mark" aria-hidden="true">{ }</span></div>
+					<h3>Customer API</h3>
+					<p>A Spring Boot microservice for customer records, with API documentation and automated tests.</p>
+					<div class="project-meta"><span>Java · MariaDB · JUnit</span><span class="visit" aria-hidden="true">↗</span></div>
+				</a>
+				<a class="project-card" href="https://github.com/lucaslucantoni/computer-vision" target="_blank" rel="noreferrer">
+					<div class="project-top"><span class="project-index">03 / EXPERIMENTS</span><span class="project-mark" aria-hidden="true">◎</span></div>
+					<h3>Computer Vision</h3>
+					<p>A collection of Python experiments exploring image operations, face detection, histograms, and circles.</p>
+					<div class="project-meta"><span>Python · OpenCV · Vision</span><span class="visit" aria-hidden="true">↗</span></div>
+				</a>
+				<a class="project-card" href="https://github.com/lucaslucantoni/design-patterns" target="_blank" rel="noreferrer">
+					<div class="project-top"><span class="project-index">04 / LEARNING</span><span class="project-mark" aria-hidden="true">✳</span></div>
+					<h3>Design Patterns</h3>
+					<p>Small Java examples exploring reusable approaches to common software design problems.</p>
+					<div class="project-meta"><span>Java · Software design</span><span class="visit" aria-hidden="true">↗</span></div>
+				</a>
+			</div>
+		</section>
+
+		<section class="shell about" id="about" aria-labelledby="about-title">
+			<div>
+				<p class="section-kicker">A little about me</p>
+				<h2 id="about-title">Curious by nature.<br>Engineer by craft.</h2>
+			</div>
+			<div class="about-copy">
+				<p>I'm Lucas, a senior software developer who cares about the details that make software reliable: clear boundaries, useful tests, and systems that are straightforward to work with.</p>
+				<p>I spend most of my time in the Java ecosystem and also work with C#. Along the way, I've explored cloud platforms, identity management, and the occasional computer-vision rabbit hole.</p>
+				<div class="about-details">
+					<div class="detail"><h3>Focus</h3><p>Backend systems<br>APIs · Application architecture</p></div>
+					<div class="detail"><h3>Tools I reach for</h3><p>Java · Spring<br>C# · Azure · Keycloak</p></div>
+					<div class="detail"><h3>Certifications</h3><p>Microsoft Azure Fundamentals<br>Azure Data Fundamentals</p></div>
+					<div class="detail"><h3>Elsewhere</h3><p>Open-source projects<br>Continuous learning</p></div>
+				</div>
+			</div>
+		</section>
+
+		<section class="shell contact" id="contact" aria-labelledby="contact-title">
+			<div>
+				<p class="section-kicker">Have something in mind?</p>
+				<h2 id="contact-title">Let's make something <span>useful.</span></h2>
+			</div>
+			<div class="contact-actions">
+				<a class="button" href="mailto:contato.dev.lucas@gmail.com">Send me an email <span class="arrow" aria-hidden="true">↗</span></a>
+				<a class="text-link" href="https://www.linkedin.com/in/lucaslucantoni" target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<div class="shell footer-inner">
+			<p class="footer-note">© <span id="year">2026</span> Lucas Lucantoni</p>
+			<p class="footer-note">Designed &amp; built with care</p>
+		</div>
+	</footer>
+</body>
+</html>
